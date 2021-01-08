@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<!--  # Kinobestilling
+I koronatida kan det være vanskelig å gå på kino, spesielt nå som smitten øker i samfunnet. Trøndelag kino ønsker derfor å tilby en mer koronavennlig kinoopplevelse, der du bestiller både billetter og snacks på forhånd, og når du kommer til kinoen, ligger den snacksen du har bestilt på plassen din. De ønsker en app der kunder kan bestille både billetter og snacks i samme bestilling. Kinosjefen har tegnet skissen Kinobestilling.png som et slags utgangspunkt.
+
+I denne oppgaven skal du øve deg på å bruke radioknapper og sjekkbokser i HTML og Javascript. Kunden skal først velge film, og så velge snacks, godteri og drikke. Kunden skal bare kunne velge en film, men kan velge mange typer snacks. Når kunden gjort valgene sine skal en oppsummering av bestillingen med total pris skrives ut på skjermen, i tillegg til en knapp for å bestille. Når kunden klikker på bestillingsknappen, skal teksten "Bestilt" skrives ut.
+
+Skissen over er bare et forslag, du kan utforme appen som du vil, så lenge alle funksjonene er med.  --->
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nogo Kino</title>
+    <link rel="icon" href="bilder/trondheimKino.png">
+    <link rel="stylesheet" type="text/css" href="kinobestilling.css">
+</head>
+
+<body>
+    <div class="header">
+        <h1>Trondheim Kino - koronavennlig bestilling</h1>
+    </div>
+
+    <!-- container der bruker kan scrolle gjennom aktuelle filmer -->
+    <div class="filmContainer">
+        <header>
+            <label for="slide-1">Black Panther</label>
+            <label for="slide-2">It Might Get Loud</label>
+            <label for="slide-3">Parasite</label>
+            <label for="slide-4">Interstellar</label>
+            <label for="slide-5">Tenet</label>
+        </header>
+        <div class="posRelative">
+            <input id="slide-1" type="radio" name="slides" checked>
+            <section class="slide slide-one">
+                <h1 class="headline">Black Panther</h1>
+                <!-- <p class="summary">After the death of his father, T'Challa returns home to the African nation of Wakanda to take his rightful place as king. When a powerful enemy suddenly reappears, T'Challa's mettle as king -- and as Black Panther -- gets tested when he's drawn into a conflict that puts the fate of Wakanda and the entire world at risk. Faced with treachery and danger, the young king must rally his allies and release the full power of Black Panther to defeat his foes and secure the safety of his people.</p> -->
+            </section>
+
+            <input id="slide-2" type="radio" name="slides">
+            <section class="slide slide-two">
+                <h1 class="headline">It Might Get Loud</h1>
+                <p class="summary"></p>
+            </section>
+
+            <input id="slide-3" type="radio" name="slides">
+            <section class="slide slide-three">
+                <h1 class="headline">Parasite</h1>
+                <p class="summary"></p>
+            </section>
+
+            <input id="slide-4" type="radio" name="slides">
+            <section class="slide slide-four">
+                <h1 class="headline">Interstellar</h1>
+                <p class="summary"></p>
+            </section>
+
+            <input id="slide-5" type="radio" name="slides">
+            <section class="slide slide-five">
+                <h1 class="headline">Tenet</h1>
+                <p class="summary"></p>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- området man velger film -->
+    <div class="movies">
+        <h3>Velg film</h3>
+
+        <div class="inline">
+            <label for="rdBlackPanther" class="labelStyle" id="labelBP">
+                <input type="radio" class="film" name="film" id="rdBlackPanther" value="Black Panther" data-pris="130">
+                <img src="bilder/blackPantherVert.jpg" width="40%" for="rdBlackPanther">
+                <p>130,-  Black Panther</p>
+            </label>
+            <label for="rdParasite" class="labelStyle" id="labelPar">
+                <input type="radio" class="film" name="film" id="rdParasite" value="Parasite" data-pris="130">
+                <img src="bilder/parasiteVert.jpg" width="23%">
+                <p>130,-  Parasite</p>
+            </label>
+            <label for="rdItMightGetLoud" class="labelStyle" id="labelIMGL">
+                <input type="radio" class="film" name="film" id="rdItMightGetLoud" value="It Might Get Loud" data-pris="130">
+                <img src="bilder/itMightGetLoudVert.jpg" width="13.7%">
+                <p>130,-  It Might Get Loud</p>
+            </label>
+            <label for="rdInterstellar" class="labelStyle" id="labelInter">
+                <input type="radio" class="film" name="film" id="rdInterstellar" value="Interstellar" data-pris="130">
+                <img src="bilder/interstellarVert.jpg" width="23%">
+                <p>130,-  Interstellar</p>
+            </label>
+            <label for="rdTenet" class="labelStyle" id="labelTenet">
+                <input type="radio" class="film" name="film" id="rdTenet" value="Tenet" data-pris="130">
+                <img src="bilder/tenetVert.jpg" width="40.5%">
+                <p>130,-  Tenet</p>
+            </label>
+        </div>
+    </div>
+
+    <!-- området man velger snacks -->
+    <div class="snacks">
+        <h3>Velg snacks</h3>
+        <input type="checkbox" class="snacks" name="snacks" id="chkPopcorn" value="Popcorn" data-pris="69">
+        <label for="chkPopcorn" class="labelStyle">69,- Popcorn</label>
+
+        <input type="checkbox" class="snacks" name="snacks" id="chkBaconSnacks" value="Bacon Snacks" data-pris="69">
+        <label for="chkBaconSnacks" class="labelStyle">69,- Bacon Snacks</label>
+
+        <input type="checkbox" class="snacks" name="snacks" id="chkSourCream" value="Sour Cream Snacks" data-pris="69">
+        <label for="chkSourCream" class="labelStyle">69,- Sour Cream Snacks</label>
+
+        <input type="checkbox" class="snacks" name="snacks" id="chkFullkornSnacks" value="Fullkorn Snacks" data-pris="69">
+        <label for="chkFullkornSnacks" class="labelStyle">69,- Fullkorn Snacks</label>
+
+        <input type="checkbox" class="snacks" name="snacks" id="chkSmågodt" value="Smågodt" data-pris="39">
+        <label for="chkSmågodt" class="labelStyle">39,- Smågodt</label>
+    </div>
+
+    <!-- området man velger drikke -->
+    <div class="drikke">
+        <h3>Velg drikke</h3>
+        <input type="checkbox" class="drikke" name="drikke" id="chkCola" value="Coca Cola" data-pris="39">
+        <label for="chkCola" class="labelStyle">Coca Cola</label>
+
+        <input type="checkbox" class="drikke" name="drikke" id="chkColaZ" value="Coca Cola Zero" data-pris="39">
+        <label for="chkColaZ" class="labelStyle">39,- Coca Cola Zero</label>
+
+        <input type="checkbox" class="drikke" name="drikke" id="chkPepsiMax" value="Pepsi Max" data-pris="39">
+        <label for="chkPepsiMax" class="labelStyle">39,- Pepsi Max</label>
+
+        <input type="checkbox" class="drikke" name="drikke" id="chkFanta" value="Fanta" data-pris="39">
+        <label for="chkFanta" class="labelStyle">39,- Fanta</label>
+
+        <input type="checkbox" class="drikke" name="drikke" id="chkFantaExotic" value="Fanta Exotic" data-pris="39">
+        <label for="chkFantaExotic" class="labelStyle">39,- Fanta Exotic</label>
+
+        <input type="checkbox" class="drikke" name="drikke" id="chkSprite" value="McDonald's Sprite" data-pris="39">
+        <label for="chkSprite" class="labelStyle">39,- Sprite</label>
+
+        <input type="checkbox" class="drikke" name="drikke" id="chkImsdal" value="Imsdal vann" data-pris="39">
+        <label for="chkImsdal" class="labelStyle">39,- Imsdal vann</label>
+    </div>
+
+    <!-- området bestillingen kommer fram, bekreftelse av bestilling -->
+    <br><br>
+    <div id="bestillingBoks">
+        <h2 id="bestillingOverskrift">Bestilling:</h2>
+        <div id="bestilling"></div>
+    </div>
+
+    <!-- bestillknapp -->
+    <br><br>
+    <input type="button" id="btnBestill" value="Bestill">
+
+    <!-- kvittering for bestilling -->
+    <br><br>
+
+    <div id="kvittering"></div>
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1784.782075653674!2d10.39058911584149!3d63.42722458296444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x466d31907a298405%3A0xfc4a25a82afa2fbb!2sTrondheim%20Movie%20Theatre%20-%20Prinsen!5e0!3m2!1sen!2sno!4v1606676195743!5m2!1sen!2sno" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" id="kart"></iframe>
+
+</body>
+<script>
+    //henter inn knappen
+    let bestillKnapp = document.getElementById("btnBestill");
+    let bestilling = document.getElementById("bestilling");
+    let kvittering = document.getElementById("kvittering");
+    
+
+    //funksjon som henter inn data for bestillingsknappen
+    function getFilm() {
+        let valgtFilm = "";
+        let blackPanther = document.getElementById("rdBlackPanther");
+        let parasite = document.getElementById("rdParasite");
+        let itMightGetLoud = document.getElementById("rdItMightGetLoud");
+        let interstellar = document.getElementById("rdInterstellar");
+        let tenet = document.getElementById("rdTenet");
+
+        if (blackPanther.checked) {
+            return {
+                film: blackPanther.value,
+                pris: blackPanther.getAttribute("data-pris")
+            };
+        } else if (parasite.checked) {
+            return {
+                film: parasite.value,
+                pris: parasite.getAttribute("data-pris")
+            };
+        } else if (itMightGetLoud.checked) {
+            return {
+                film: itMightGetLoud.value,
+                pris: itMightGetLoud.getAttribute("data-pris")
+            };
+        } else if (interstellar.checked) {
+            return {
+                film: interstellar.value,
+                pris: interstellar.getAttribute("data-pris")
+            };
+        } else if (tenet.checked) {
+            return {
+                film: tenet.value,
+                pris: tenet.getAttribute("data-pris")
+            };
+        } else {
+            alert("Vennligst velg en film!");
+            return false;
+        }
+
+    }
+
+    //funksjon for å hente ut snacks
+    function getSnacks() {
+        let snacks = document.getElementsByClassName("snacks");
+        let valgtSnacks = [];
+
+        //lager en løkke for å gå gjennom array for å sjekke hva som er krysset av
+        for (let i = 0; i < snacks.length; i++) {
+            if (snacks[i].checked) {
+                valgtSnacks.push({
+                    snacks: snacks[i].value,
+                    pris: snacks[i].getAttribute("data-pris")
+                });
+            }
+        } //console.log(valgtSnacks); //for å sjekke om det virker
+        return valgtSnacks;
+    }
+
+    //funksjon for å hente ut drikke
+    function getDrikke() {
+        let drikke = document.getElementsByClassName("drikke");
+        let valgtDrikke = [];
+
+        //løkke for som går gjennom array for å sjekke hva som er krysset av
+        for (let i = 0; i < drikke.length; i++) {
+            if (drikke[i].checked) {
+                valgtDrikke.push({
+                    drikke: drikke[i].value,
+                    pris: drikke[i].getAttribute("data-pris")
+                });
+            }
+        }
+        console.log(valgtDrikke); //sjekker om det virker
+        return valgtDrikke;
+
+    }
+
+    //funksjonen for bestilling, henter hva bruker har valgt
+    function bestill() {
+        //film variabler
+        let bestiltFilm = getFilm();
+        //let prisFilm = +film.pris;
+        //snacks variabler
+        let bestiltSnacks = getSnacks();
+        let snacksTekst = "";
+        //drikke variabler
+        let bestiltDrikke = getDrikke();
+        let drikkeTekst = "";
+        
+        let totalpris = +bestiltFilm.pris;
+
+        //løkke for å skrive ut snacksen som er valgt, gjør det enklere
+        for (let i = 0; i < bestiltSnacks.length; i++) {
+            snacksTekst += bestiltSnacks[i].snacks + " " + bestiltSnacks[i].pris + "kr" + ", ";
+            totalpris += +bestiltSnacks[i].pris;
+        }
+        for (let i = 0; i < bestiltDrikke.length; i++) {
+            drikkeTekst += bestiltDrikke[i].drikke + " " + bestiltDrikke[i].pris + "kr, ";
+            totalpris += +bestiltDrikke[i].pris;
+        }
+
+        if (bestiltFilm == "" || getDrikke() == "" || bestiltSnacks == []) {
+            return false;
+        } else {
+            bestilling.innerHTML = "Du har valgt billett til " + bestiltFilm.film + " " + bestiltFilm.pris + "kr. " + "Som snacks og drikke har du valgt " + snacksTekst + " " + drikkeTekst + "." + "<br>" + "Totalt: " + totalpris + "kr.";
+        }
+        
+        return totalpris;
+        
+        console.log(bestilling);
+    }
+    
+    function kvitteringen(){
+        let film = getFilm();
+        let snacks = getSnacks();
+        let drikke = getDrikke();
+        let totalpris = bestill();
+        
+        
+        kvittering.innerHTML = "<h1>Bestilt!   </h1>" + "<h2>Her er kvitteringen din:</h2>" + film.film + " " + film.pris + "kr<br>";
+        
+        for(let i = 0; i < snacks.length; i++){
+        kvittering.innerHTML += snacks[i].snacks + " " + snacks[i].pris + "kr<br>";
+       }
+        
+        for(let i = 0; i < drikke.length; i++){
+        kvittering.innerHTML += drikke[i].drikke + " " + drikke[i].pris + "kr<br>";
+       }
+        
+        kvittering.innerHTML += "Totalpris = " + totalpris + " " + "kr" +"<br><br><br><br>" + "Takk for at bestilte hos oss!";
+        kvittering.style.opacity = 1; 
+    }
+
+    //får knappen til å fungere, lytter til knappen.
+    bestillKnapp.addEventListener("click", kvitteringen)
+    document.querySelectorAll('[class="film"], [class="snacks"], [class="drikke"]').forEach(function(e) {
+        e.addEventListener("click", bestill)
+    });
+
+</script>
+
+</html>
